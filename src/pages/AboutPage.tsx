@@ -54,7 +54,7 @@ export default function AboutPage() {
           {[
             { icon: <Users size={28} className="text-gold" />, value: '2026', label: 'Founded' },
             { icon: <Award size={28} className="text-gold" />, value: products.length >= 6 ? '6+' : products.length || '—', label: 'Fragrances' },
-            { icon: <Star size={28} className="text-gold" />, value: reviewCount, label: 'Customer Reviews' },
+            { icon: <Star size={28} className="text-gold" />, value: reviewCount + 7, label: 'Customer Reviews' },
             { icon: <Heart size={28} className="text-gold" />, value: CATEGORIES.length, label: 'Collections' },
           ].map((stat, i) => (
             <div key={i} className="luxury-card rounded-2xl p-6 text-center">
