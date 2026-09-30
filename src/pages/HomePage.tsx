@@ -3,12 +3,25 @@ import { ArrowRight, Star, Shield, Truck, RefreshCw, Award } from 'lucide-react'
 import { useStore, CATEGORIES } from '../store/useStore';
 import ProductCard from '../components/ProductCard';
 
-
 export default function HomePage() {
   const { products } = useStore();
   const featured = products.filter(p => p.featured);
   const bestsellers = products.filter(p => p.isBestseller);
   const newArrivals = products.filter(p => p.isNew);
+  const suppliedReviews = [
+    { id: 'customer-review-1', userName: 'Ayesha K.', rating: 5, comment: 'Fragrance bohat achi hai, aur packaging bhi kaafi neat thi. Really loved it!' },
+    { id: 'customer-review-2', userName: 'Muhammad H.', rating: 5, comment: 'The fragrance is really nice and long-lasting. Quality bhi price ke hisaab se bohat achi hai.' },
+    { id: 'customer-review-3', userName: 'Sana R.', rating: 4, comment: 'Mujhe fragrance kaafi pasand aayi. Packaging bhi achi thi aur overall experience acha raha.' },
+    { id: 'customer-review-4', userName: 'Ahmed S.', rating: 5, comment: 'Amazing fragrance! Smell classy hai aur lasting bhi achi hai. Definitely satisfied.' },
+    { id: 'customer-review-5', userName: 'Hira M.', rating: 5, comment: 'Bohat pyari fragrance hai, bilkul expected se better. Will definitely try more fragrances.' },
+    { id: 'customer-review-6', userName: 'Usman A.', rating: 4, comment: 'Good quality and nice packaging. Fragrance bhi kaafi pleasant hai, overall acha experience raha.' },
+    { id: 'customer-review-7', userName: 'Zainab F.', rating: 5, comment: 'Honestly, fragrance bohat zabardast hai. I really liked the quality and the overall presentation.' },
+  ];
+  const productReviews = products
+    .flatMap(product => product.reviews.map(review => ({ ...review, productName: product.name })))
+    .sort((first, second) => second.date.localeCompare(first.date))
+    .slice(0, 2);
+  const customerReviews = [...suppliedReviews, ...productReviews];
 
   return (
     <div className="pt-[104px]">
@@ -63,22 +76,22 @@ export default function HomePage() {
 
             <div className="flex items-center gap-3 sm:gap-8 mt-10">
               <div>
-                <div className="font-display text-2xl font-bold gold-text">500+</div>
-                <div className="text-gray-500 text-[10px] sm:text-xs">Happy Customers</div>
+                <div className="font-display text-2xl font-bold gold-text">2026</div>
+                <div className="text-gray-500 text-[10px] sm:text-xs">Founded</div>
               </div>
 
               <div className="w-px h-8 bg-gold/30" />
 
               <div>
-                <div className="font-display text-2xl font-bold gold-text">50+</div>
-                <div className="text-gray-500 text-[10px] sm:text-xs">Unique Fragrances</div>
+                <div className="font-display text-2xl font-bold gold-text">{products.length >= 6 ? '6+' : products.length || '—'}</div>
+                <div className="text-gray-500 text-[10px] sm:text-xs">Fragrances</div>
               </div>
 
               <div className="w-px h-8 bg-gold/30" />
 
               <div>
-                <div className="font-display text-2xl font-bold gold-text">25+</div>
-                <div className="text-gray-500 text-[10px] sm:text-xs">Years of Excellence</div>
+                <div className="font-display text-2xl font-bold gold-text">{CATEGORIES.length}</div>
+                <div className="text-gray-500 text-[10px] sm:text-xs">Collections</div>
               </div>
             </div>
           </div>
@@ -94,7 +107,7 @@ export default function HomePage() {
       {/* ── Marquee Banner ──────────────────────────────────────────────── */}
       <div className="py-4 bg-gradient-to-r from-gold-dark via-gold to-gold-dark overflow-hidden">
         <div className="marquee-track">
-          {Array(4).fill(['✦ Luxury Fragrances', '✦ Cash on Delivery', '✦ Premium Quality', '✦ Free Shipping Above Rs. 5,000', '✦ 100% Authentic', '✦ Expert Curation']).flat().map((text, i) => (
+          {Array(4).fill(['✦ Luxury Fragrances', '✦ Cash on Delivery', '✦ Premium Quality', '✦ Free Shipping Above Rs. 5,000', '✦ Authentic Fragrances', '✦ Expert Curation']).flat().map((text, i) => (
             <span key={i} className="text-black text-xs font-semibold tracking-widest uppercase px-6 whitespace-nowrap">{text}</span>
           ))}
         </div>
@@ -153,7 +166,7 @@ export default function HomePage() {
             <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-center">
               <span className="badge-gold mb-2 w-fit">Men's</span>
               <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-1">Bold & Masculine</h3>
-              <p className="text-gray-300 text-sm mb-4">Up to 20% off selected fragrances</p>
+              <p className="text-gray-300 text-sm mb-4">Explore our selection of men's fragrances</p>
               <Link to="/shop?category=men" className="btn-gold px-6 py-2 rounded-full text-xs w-fit flex items-center gap-1">
                 Shop Now <ArrowRight size={12} />
               </Link>
@@ -238,7 +251,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: <Shield size={28} className="text-gold" />, title: '100% Authentic', desc: 'Every fragrance is guaranteed authentic, sourced directly from premium manufacturers.' },
+              { icon: <Shield size={28} className="text-gold" />, title: 'Authentic Fragrances', desc: 'We carefully select fragrances from trusted suppliers.' },
               { icon: <Truck size={28} className="text-gold" />, title: 'Fast Delivery', desc: 'Swift and secure delivery to your doorstep. Free shipping on orders above Rs. 5,000.' },
               { icon: <Award size={28} className="text-gold" />, title: 'Premium Quality', desc: 'Only the finest ingredients go into our fragrances. Quality is our promise.' },
               { icon: <RefreshCw size={28} className="text-gold" />, title: 'Easy Returns', desc: 'Not satisfied? Return within 7 days for a full refund. No questions asked.' },
@@ -256,36 +269,29 @@ export default function HomePage() {
       </section>
 
       {/* ── Testimonials ─────────────────────────────────────────────────── */}
-      <section className="py-14 sm:py-20 max-w-7xl mx-auto px-4">
+      {customerReviews.length > 0 && <section className="py-14 sm:py-20 max-w-7xl mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">Customer Love</p>
+          <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">Customer Reviews</p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">What Our Clients Say</h2>
           <div className="gold-divider max-w-xs mx-auto mt-4" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { name: 'Ayesha Khan', location: 'Karachi', rating: 5, comment: 'MK Brothers has the most authentic fragrances I have experienced. The quality and presentation feel premium.', perfume: 'Verified Customer' },
-            { name: 'Bilal Ahmed', location: 'Lahore', rating: 5, comment: 'The packaging is stunning and the fragrance lasts all day. Absolutely worth every rupee.', perfume: 'Verified Customer' },
-            { name: 'Sara Malik', location: 'Islamabad', rating: 5, comment: 'The customer service is impeccable and delivery was fast. Will definitely shop again!', perfume: 'Verified Customer' },
-          ].map((review, i) => (
-            <div key={i} className="luxury-card rounded-2xl p-6">
-              <div className="flex items-center gap-1 mb-3">
-                {[1, 2, 3, 4, 5].map(s => (
-                  <Star key={s} size={14} className={s <= review.rating ? 'fill-gold text-gold' : 'text-gray-700'} />
+          {customerReviews.map(review => (
+            <div key={review.id} className="luxury-card rounded-2xl p-6">
+              <div className="flex items-center gap-1 mb-3" aria-label={`${review.rating} out of 5 stars`}>
+                {[1, 2, 3, 4, 5].map(star => (
+                  <Star key={star} size={14} className={star <= review.rating ? 'fill-gold text-gold' : 'text-gray-700'} />
                 ))}
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-4 italic">"{review.comment}"</p>
-              <div className="border-t border-gold/15 pt-4 flex items-center justify-between">
-                <div>
-                  <p className="text-white font-semibold text-sm">{review.name}</p>
-                  <p className="text-gray-500 text-xs">{review.location}</p>
-                </div>
-                <span className="badge-gold">{review.perfume}</span>
+              <div className="border-t border-gold/15 pt-4 flex items-center justify-between gap-3">
+                <p className="text-white font-semibold text-sm">{review.userName}</p>
+                {review.productName && <span className="badge-gold">{review.productName}</span>}
               </div>
             </div>
           ))}
         </div>
-      </section>
+      </section>}
 
       {/* ── CTA Section ──────────────────────────────────────────────────── */}
       <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4">
@@ -293,10 +299,10 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-gold/5 rounded-3xl" />
           <div className="relative z-10">
             <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">Limited Time</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">Get 10% Off Your First Order</h2>
-            <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">Sign up today and receive an exclusive welcome discount on your first purchase.</p>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">Join MK Brothers</h2>
+            <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">Create an account to save your favorite fragrances and manage your orders.</p>
             <Link to="/signup" className="btn-gold px-10 py-4 rounded-full text-sm font-semibold inline-flex items-center gap-2">
-              Claim Your Discount <ArrowRight size={16} />
+              Create Account <ArrowRight size={16} />
             </Link>
           </div>
         </div>

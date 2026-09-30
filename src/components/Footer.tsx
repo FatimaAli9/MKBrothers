@@ -52,7 +52,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            Crafting luxury fragrances since 1995. Our mission is to make world-class perfumes accessible to every connoisseur.
+            Founded in 2026, our mission is to make luxury fragrances accessible to every connoisseur.
           </p>
           <div className="flex items-center gap-3">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-gold/30 flex items-center justify-center text-gray-400 hover:text-gold hover:border-gold transition-colors text-sm">

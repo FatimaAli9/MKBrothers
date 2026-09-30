@@ -234,10 +234,10 @@ export default function AdminPage() {
               {/* Stats */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 {[
-                  { label: 'Total Revenue', value: formatPrice(totalRevenue), icon: <DollarSign size={20} className="text-gold" />, change: '+12%' },
-                  { label: 'Total Orders', value: orders.length, icon: <ShoppingCart size={20} className="text-gold" />, change: '+5%' },
-                  { label: 'Pending Orders', value: pendingOrders, icon: <TrendingUp size={20} className="text-gold" />, change: pendingOrders > 0 ? 'Needs action' : 'All clear' },
-                  { label: 'Customers', value: totalUsers, icon: <Users size={20} className="text-gold" />, change: '+3 this week' },
+                  { label: 'Total Revenue', value: formatPrice(totalRevenue), icon: <DollarSign size={20} className="text-gold" />, note: 'All time' },
+                  { label: 'Total Orders', value: orders.length, icon: <ShoppingCart size={20} className="text-gold" />, note: 'All orders' },
+                  { label: 'Pending Orders', value: pendingOrders, icon: <TrendingUp size={20} className="text-gold" />, note: pendingOrders > 0 ? 'Needs action' : 'All clear' },
+                  { label: 'Customers', value: totalUsers, icon: <Users size={20} className="text-gold" />, note: 'Registered users' },
                 ].map((stat, i) => (
                   <div key={i} className="luxury-card rounded-xl p-4">
                     <div className="flex items-center justify-between mb-2">
@@ -245,7 +245,7 @@ export default function AdminPage() {
                       <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center">{stat.icon}</div>
                     </div>
                     <p className="font-display text-xl font-bold text-white">{stat.value}</p>
-                    <p className="text-green-400 text-xs mt-1">{stat.change}</p>
+                    <p className="text-gray-500 text-xs mt-1">{stat.note}</p>
                   </div>
                 ))}
               </div>

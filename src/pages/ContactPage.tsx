@@ -147,7 +147,7 @@ export default function ContactPage() {
                 {[
                   { q: 'Do you offer Cash on Delivery?', a: 'Yes! We offer COD across all major cities in Pakistan.' },
                   { q: 'How long does delivery take?', a: 'Typically 2-5 business days depending on your location.' },
-                  { q: 'Are all your products authentic?', a: 'Absolutely. We guarantee 100% authenticity on all products.' },
+                  { q: 'Are all your products authentic?', a: 'We carefully select fragrances from trusted suppliers and prioritize authenticity.' },
                 ].map((faq, i) => (
                   <div key={i} className="bg-gray-900/50 rounded-xl p-3.5">
                     <p className="text-white text-sm font-semibold mb-1">Q: {faq.q}</p>

@@ -79,6 +79,10 @@ export default function ProductDetailPage() {
 
   const images = product.images.length > 0 ? product.images : product.image ? [product.image] : [];
   const activeImage = images[activeImg];
+  const reviewDistribution = [5, 4, 3, 2, 1].map(rating => ({
+    rating,
+    count: product.reviews.filter(review => review.rating === rating).length,
+  }));
 
   return (
     <div className="pt-[104px]">
@@ -137,15 +141,19 @@ export default function ProductDetailPage() {
             <p className="text-gray-400 text-sm mb-4">{product.concentration} · {product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
 
             {/* Rating */}
-            <div className="flex items-center gap-2 mb-5">
-              <div className="flex items-center gap-0.5">
-                {[1,2,3,4,5].map(s => (
-                  <Star key={s} size={16} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
-                ))}
+            {product.reviewCount > 0 ? (
+              <div className="flex items-center gap-2 mb-5">
+                <div className="flex items-center gap-0.5">
+                  {[1,2,3,4,5].map(s => (
+                    <Star key={s} size={16} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
+                  ))}
+                </div>
+                <span className="text-gold font-semibold text-sm">{product.rating}</span>
+                <span className="text-gray-500 text-sm">({product.reviewCount} reviews)</span>
               </div>
-              <span className="text-gold font-semibold text-sm">{product.rating}</span>
-              <span className="text-gray-500 text-sm">({product.reviewCount} reviews)</span>
-            </div>
+            ) : (
+              <p className="text-gray-500 text-sm mb-5">No reviews yet</p>
+            )}
 
             {/* Price */}
             <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 mb-6">
@@ -308,28 +316,39 @@ export default function ProductDetailPage() {
               {/* Review summary */}
               <div className="luxury-card rounded-2xl p-5 flex items-center gap-6">
                 <div className="text-center">
-                  <div className="font-display text-5xl font-bold gold-text">{product.rating}</div>
-                  <div className="flex items-center gap-0.5 justify-center my-1">
-                    {[1,2,3,4,5].map(s => (
-                      <Star key={s} size={14} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
+                  {product.reviewCount > 0 ? (
+                    <>
+                      <div className="font-display text-5xl font-bold gold-text">{product.rating}</div>
+                      <div className="flex items-center gap-0.5 justify-center my-1">
+                        {[1,2,3,4,5].map(s => (
+                          <Star key={s} size={14} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
+                        ))}
+                      </div>
+                      <p className="text-gray-500 text-xs">{product.reviewCount} reviews</p>
+                    </>
+                  ) : (
+                    <p className="text-gray-500 text-sm">No reviews yet</p>
+                  )}
+                </div>
+                {product.reviews.length > 0 ? (
+                  <div className="flex-1 space-y-1">
+                    {reviewDistribution.map(({ rating, count }) => (
+                      <div key={rating} className="flex items-center gap-2">
+                        <span className="text-xs text-gray-500 w-2">{rating}</span>
+                        <Star size={10} className="text-gold fill-gold" />
+                        <div className="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-gold to-gold-light rounded-full"
+                            style={{ width: `${(count / product.reviews.length) * 100}%` }}
+                          />
+                        </div>
+                        <span className="text-xs text-gray-500 w-4 text-right">{count}</span>
+                      </div>
                     ))}
                   </div>
-                  <p className="text-gray-500 text-xs">{product.reviewCount} reviews</p>
-                </div>
-                <div className="flex-1 space-y-1">
-                  {[5,4,3,2,1].map(r => (
-                    <div key={r} className="flex items-center gap-2">
-                      <span className="text-xs text-gray-500 w-2">{r}</span>
-                      <Star size={10} className="text-gold fill-gold" />
-                      <div className="flex-1 h-1.5 bg-gray-800 rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-gold to-gold-light rounded-full"
-                          style={{ width: `${r === 5 ? 70 : r === 4 ? 20 : r === 3 ? 5 : r === 2 ? 3 : 2}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                ) : (
+                  <p className="flex-1 text-gray-500 text-sm">Rating breakdown appears as reviews are submitted.</p>
+                )}
               </div>
 
               {/* Existing reviews */}

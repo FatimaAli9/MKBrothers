@@ -71,12 +71,16 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
                 <Heart size={18} className={inWishlist ? 'fill-gold text-gold' : 'text-gray-500'} />
               </button>
             </div>
-            <div className="flex items-center gap-1 mt-2">
-              {[1,2,3,4,5].map(s => (
-                <Star key={s} size={12} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
-              ))}
-              <span className="text-gray-500 text-xs ml-1">({product.reviewCount})</span>
-            </div>
+            {product.reviewCount > 0 ? (
+              <div className="flex items-center gap-1 mt-2">
+                {[1,2,3,4,5].map(s => (
+                  <Star key={s} size={12} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
+                ))}
+                <span className="text-gray-500 text-xs ml-1">({product.reviewCount})</span>
+              </div>
+            ) : (
+              <p className="text-gray-500 text-xs mt-2">No reviews yet</p>
+            )}
             <p className="text-gray-400 text-sm mt-2 line-clamp-2">{product.description}</p>
             <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
               <div className="flex items-center gap-2">
@@ -145,12 +149,16 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
 
         {/* Info */}
         <div className="p-4">
-          <div className="flex items-center gap-1 mb-2">
-            {[1,2,3,4,5].map(s => (
-              <Star key={s} size={11} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
-            ))}
-            <span className="text-gray-500 text-xs ml-1">({product.reviewCount})</span>
-          </div>
+          {product.reviewCount > 0 ? (
+            <div className="flex items-center gap-1 mb-2">
+              {[1,2,3,4,5].map(s => (
+                <Star key={s} size={11} className={s <= Math.round(product.rating) ? 'fill-gold text-gold' : 'text-gray-700'} />
+              ))}
+              <span className="text-gray-500 text-xs ml-1">({product.reviewCount})</span>
+            </div>
+          ) : (
+            <p className="text-gray-500 text-xs mb-2">No reviews yet</p>
+          )}
           <h3 className="font-display text-base font-semibold text-white group-hover:text-gold transition-colors">{product.name}</h3>
           <p className="text-gray-500 text-xs mt-0.5">{product.concentration} · {product.volume}</p>
           <div className="flex items-center justify-between mt-3">

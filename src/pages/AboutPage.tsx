@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Award, Heart, Star, Users } from 'lucide-react';
+import { CATEGORIES, useStore } from '../store/useStore';
 
 export default function AboutPage() {
+  const products = useStore(state => state.products);
+  const reviewCount = products.reduce((total, product) => total + product.reviewCount, 0);
+
   return (
     <div className="pt-[104px]">
       {/* Hero */}
@@ -39,8 +43,8 @@ export default function AboutPage() {
           <div className="relative">
             <img src="/images/about-bg.jpg" alt="Our Story" className="rounded-2xl w-full h-80 object-cover" />
             <div className="absolute bottom-3 right-3 sm:-bottom-4 sm:-right-4 luxury-card rounded-xl p-3 sm:p-4 text-center w-32">
-              <div className="font-display text-3xl font-bold gold-text">25+</div>
-              <div className="text-gray-400 text-xs">Years of Excellence</div>
+              <div className="font-display text-3xl font-bold gold-text">2026</div>
+              <div className="text-gray-400 text-xs">Founded</div>
             </div>
           </div>
         </div>
@@ -48,10 +52,10 @@ export default function AboutPage() {
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {[
-            { icon: <Users size={28} className="text-gold" />, value: '10,000+', label: 'Happy Customers' },
-            { icon: <Award size={28} className="text-gold" />, value: '50+', label: 'Premium Fragrances' },
-            { icon: <Star size={28} className="text-gold" />, value: '4.9', label: 'Average Rating' },
-            { icon: <Heart size={28} className="text-gold" />, value: '100%', label: 'Authentic Products' },
+            { icon: <Users size={28} className="text-gold" />, value: '2026', label: 'Founded' },
+            { icon: <Award size={28} className="text-gold" />, value: products.length >= 6 ? '6+' : products.length || '—', label: 'Fragrances' },
+            { icon: <Star size={28} className="text-gold" />, value: reviewCount, label: 'Customer Reviews' },
+            { icon: <Heart size={28} className="text-gold" />, value: CATEGORIES.length, label: 'Collections' },
           ].map((stat, i) => (
             <div key={i} className="luxury-card rounded-2xl p-6 text-center">
               <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-3">{stat.icon}</div>
@@ -73,7 +77,7 @@ export default function AboutPage() {
               {
                 title: 'Authenticity',
                 icon: '🔐',
-                desc: 'Every fragrance we sell is 100% authentic, sourced directly from trusted manufacturers and distributors around the world. No counterfeits, ever.'
+                desc: 'We carefully select fragrances from trusted suppliers and prioritize authenticity.'
               },
               {
                 title: 'Quality',
