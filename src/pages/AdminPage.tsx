@@ -189,16 +189,16 @@ export default function AdminPage() {
 
   return (
     <div className="pt-[104px] min-h-screen">
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row">
         {/* Sidebar */}
-        <aside className="w-60 bg-[#0d0d0d] border-r border-gold/10 min-h-screen fixed top-[104px] pt-4 flex flex-col">
+        <aside className="w-full lg:w-60 bg-[#0d0d0d] border-b lg:border-b-0 lg:border-r border-gold/10 lg:min-h-screen lg:fixed lg:left-0 lg:top-[104px] lg:pt-4 flex flex-col">
           <div className="px-4 mb-4">
             <div className="flex items-center gap-2 px-3 py-2">
               <span className="badge-gold">Admin</span>
               <span className="text-white text-xs font-semibold truncate">{user.name}</span>
             </div>
           </div>
-          <nav className="px-3 space-y-1 flex-1">
+          <nav className="flex gap-1 overflow-x-auto px-3 pb-2 lg:space-y-1 lg:flex-col lg:overflow-visible lg:pb-0 lg:flex-1">
             {[
               { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={16} /> },
               { id: 'products', label: 'Products', icon: <Package size={16} />, badge: products.length },
@@ -209,14 +209,14 @@ export default function AdminPage() {
               <button
                 key={item.id}
                 onClick={() => setTab(item.id as AdminTab)}
-                className={`admin-nav-item w-full text-sm justify-between ${tab === item.id ? 'active' : ''}`}
+                className={`admin-nav-item w-max min-w-max lg:w-full lg:min-w-0 flex-shrink-0 text-sm justify-between ${tab === item.id ? 'active' : ''}`}
               >
                 <div className="flex items-center gap-2">{item.icon} {item.label}</div>
                 {item.badge !== undefined && <span className="badge-gold text-[9px]">{item.badge}</span>}
               </button>
             ))}
           </nav>
-          <div className="px-3 pb-4">
+          <div className="px-3 pb-2 lg:pb-4">
             <button onClick={() => navigate('/')} className="admin-nav-item w-full text-sm text-gray-500">
               ← Back to Store
             </button>
@@ -224,7 +224,7 @@ export default function AdminPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 ml-60 p-6 min-h-screen">
+        <main className="flex-1 min-w-0 lg:ml-60 p-4 sm:p-6 min-h-screen">
 
           {/* ── Dashboard ─────────────────────────────────────────────── */}
           {tab === 'dashboard' && (
@@ -310,8 +310,8 @@ export default function AdminPage() {
                   <Plus size={16} /> Add Product
                 </button>
               </div>
-              <div className="luxury-card rounded-xl overflow-hidden">
-                <table className="w-full text-sm">
+              <div className="luxury-card rounded-xl overflow-x-auto">
+                <table className="w-full min-w-[680px] text-sm">
                   <thead>
                     <tr className="border-b border-gray-800">
                       <th className="text-left text-gray-500 text-xs uppercase tracking-wider p-4">Product</th>
@@ -434,8 +434,8 @@ export default function AdminPage() {
           {tab === 'users' && (
             <div>
               <h1 className="font-display text-2xl font-bold text-white mb-6">Manage Users</h1>
-              <div className="luxury-card rounded-xl overflow-hidden">
-                <table className="w-full text-sm">
+              <div className="luxury-card rounded-xl overflow-x-auto">
+                <table className="w-full min-w-[680px] text-sm">
                   <thead>
                     <tr className="border-b border-gray-800">
                       <th className="text-left text-gray-500 text-xs uppercase tracking-wider p-4">User</th>
@@ -519,7 +519,7 @@ export default function AdminPage() {
             </div>
 
             <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-1">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-gray-400 text-xs uppercase tracking-wider mb-1.5 block">Product Name *</label>
                   <input value={productModal.data.name} onChange={e => setField('name', e.target.value)} className="luxury-input w-full px-3 py-2.5 rounded-lg text-sm" placeholder="Fragrance name" />
@@ -529,7 +529,7 @@ export default function AdminPage() {
                   <input type="number" value={productModal.data.price} onChange={e => setField('price', +e.target.value)} className="luxury-input w-full px-3 py-2.5 rounded-lg text-sm" />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-gray-400 text-xs uppercase tracking-wider mb-1.5 block">Original Price (Rs.)</label>
                   <input type="number" value={productModal.data.originalPrice || ''} onChange={e => setField('originalPrice', e.target.value ? +e.target.value : undefined)} className="luxury-input w-full px-3 py-2.5 rounded-lg text-sm" placeholder="Optional" />
@@ -541,7 +541,7 @@ export default function AdminPage() {
                   </select>
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-gray-400 text-xs uppercase tracking-wider mb-1.5 block">Concentration</label>
                   <select value={productModal.data.concentration} onChange={e => setField('concentration', e.target.value)} className="luxury-select w-full px-3 py-2.5 rounded-lg text-sm">

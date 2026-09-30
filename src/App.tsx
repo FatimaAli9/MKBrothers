@@ -33,9 +33,9 @@ function NotFoundPage() {
 
 function PrivacyPage() {
   return (
-    <div className="pt-[104px] min-h-screen py-16 max-w-3xl mx-auto px-4">
-      <h1 className="font-display text-4xl font-bold text-white mb-6">Privacy Policy</h1>
-      <div className="space-y-6 text-gray-300 text-sm leading-relaxed luxury-card rounded-2xl p-8">
+    <div className="pt-[104px] min-h-screen py-12 sm:py-16 max-w-3xl mx-auto px-4">
+    <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mb-6">Privacy Policy</h1>
+    <div className="space-y-6 text-gray-300 text-sm leading-relaxed luxury-card rounded-2xl p-5 sm:p-8">
         <div>
           <h2 className="font-display text-xl font-semibold text-white mb-2">Information We Collect</h2>
           <p>We collect information you provide directly to us, including name, email, phone number, and delivery address when you create an account or place an order.</p>

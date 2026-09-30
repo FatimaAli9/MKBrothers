@@ -149,7 +149,7 @@ export default function ShopPage() {
       {/* Header */}
       <div className="mb-8">
         <p className="text-gold text-xs tracking-[0.3em] uppercase mb-1">Our Collection</p>
-        <h1 className="font-display text-4xl font-bold text-white">
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-white">
           {filters.category ? CATEGORIES.find(c => c.id === filters.category)?.label + ' Fragrances' : 'All Fragrances'}
         </h1>
         {filters.search && <p className="text-gray-400 mt-1 text-sm">Search results for: "<span className="text-gold">{filters.search}</span>"</p>}
@@ -170,11 +170,11 @@ export default function ShopPage() {
         {/* Main Content */}
         <div className="flex-1 min-w-0">
           {/* Toolbar */}
-          <div className="flex items-center justify-between mb-5 flex-wrap gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-5 gap-3">
             <span className="text-gray-400 text-sm">
               Showing <span className="text-white font-semibold">{filtered.length}</span> products
             </span>
-            <div className="flex items-center gap-3">
+            <div className="flex w-full sm:w-auto items-center justify-between sm:justify-end gap-2 sm:gap-3">
               {/* Mobile filter btn */}
               <button
                 onClick={() => setSidebarOpen(true)}
@@ -188,7 +188,7 @@ export default function ShopPage() {
                 <select
                   value={filters.sort}
                   onChange={e => setFilters(f => ({ ...f, sort: e.target.value }))}
-                  className="luxury-select px-4 py-2 rounded-lg text-xs pr-8 appearance-none cursor-pointer"
+                  className="luxury-select min-w-0 max-w-full px-3 sm:px-4 py-2 rounded-lg text-xs pr-7 appearance-none cursor-pointer"
                 >
                   <option value="default">Sort: Default</option>
                   <option value="price-asc">Price: Low to High</option>
@@ -240,7 +240,7 @@ export default function ShopPage() {
       {sidebarOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={() => setSidebarOpen(false)} />
-          <div className="absolute left-0 top-0 bottom-0 w-80 bg-[#111] p-5 overflow-y-auto">
+          <div className="absolute left-0 top-0 bottom-0 w-[min(20rem,calc(100vw-1rem))] max-w-full bg-[#111] p-4 sm:p-5 overflow-y-auto">
             <div className="flex items-center justify-between mb-5">
               <h2 className="font-display font-semibold text-white flex items-center gap-2">
                 <SlidersHorizontal size={16} className="text-gold" /> Filters

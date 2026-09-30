@@ -84,14 +84,14 @@ export default function ProductDetailPage() {
     <div className="pt-[104px]">
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-gray-500 mb-8">
+        <nav className="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-6 sm:mb-8">
           <Link to="/" className="hover:text-gold transition-colors">Home</Link>
           <ChevronRight size={12} />
           <Link to="/shop" className="hover:text-gold transition-colors">Shop</Link>
           <ChevronRight size={12} />
           <Link to={`/shop?category=${product.category}`} className="hover:text-gold transition-colors capitalize">{product.category}</Link>
           <ChevronRight size={12} />
-          <span className="text-gray-400">{product.name}</span>
+          <span className="text-gray-400 break-words">{product.name}</span>
         </nav>
 
         {/* Product Main Section */}
@@ -133,7 +133,7 @@ export default function ProductDetailPage() {
               <span className="text-gold text-xs tracking-widest uppercase">{product.brand}</span>
               {product.isNew && <span className="badge-gold">New</span>}
             </div>
-            <h1 className="font-display text-4xl font-bold text-white mb-2">{product.name}</h1>
+            <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mb-2 break-words">{product.name}</h1>
             <p className="text-gray-400 text-sm mb-4">{product.concentration} · {product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
 
             {/* Rating */}
@@ -148,8 +148,8 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Price */}
-            <div className="flex items-baseline gap-3 mb-6">
-              <span className="font-display text-4xl font-bold gold-text">{formatPrice(product.price)}</span>
+            <div className="flex flex-wrap items-baseline gap-2 sm:gap-3 mb-6">
+              <span className="font-display text-3xl sm:text-4xl font-bold gold-text">{formatPrice(product.price)}</span>
               {product.originalPrice && (
                 <>
                   <span className="text-gray-600 text-xl line-through">{formatPrice(product.originalPrice)}</span>
@@ -241,12 +241,12 @@ export default function ProductDetailPage() {
 
         {/* Tabs */}
         <div className="mb-12">
-          <div className="flex border-b border-gold/20 mb-6 gap-1">
+          <div className="flex overflow-x-auto border-b border-gold/20 mb-6 gap-1">
             {(['description', 'notes', 'reviews'] as const).map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-3 text-sm font-semibold capitalize transition-all border-b-2 -mb-px ${
+                className={`flex-shrink-0 px-4 sm:px-6 py-3 text-sm font-semibold capitalize transition-all border-b-2 -mb-px ${
                   activeTab === tab ? 'border-gold text-gold' : 'border-transparent text-gray-500 hover:text-gray-300'
                 }`}
               >

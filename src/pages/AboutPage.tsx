@@ -11,7 +11,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 flex items-center justify-center text-center">
           <div>
             <p className="text-gold text-xs tracking-[0.3em] uppercase mb-3">Our Story</p>
-            <h1 className="font-display text-5xl font-bold text-white">About MK Brothers</h1>
+            <h1 className="font-display text-4xl sm:text-5xl font-bold text-white px-4">About MK Brothers</h1>
           </div>
         </div>
       </section>
@@ -21,7 +21,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
           <div>
             <p className="text-gold text-xs tracking-[0.3em] uppercase mb-3">Est. 2026</p>
-            <h2 className="font-display text-4xl font-bold text-white mb-5">A Legacy of Luxury Fragrances</h2>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-5">A Legacy of Luxury Fragrances</h2>
             <div className="space-y-4 text-gray-300 text-base leading-relaxed">
               <p>
                 MK Brothers Perfumes was established in <strong>2026</strong> by <strong>Hafiz Syed Muhammad Muddassir</strong>, and <strong>Kabeer</strong>, driven by a shared passion for premium fragrances and a vision to make high-quality perfumes accessible across Pakistan.
@@ -38,7 +38,7 @@ export default function AboutPage() {
           </div>
           <div className="relative">
             <img src="/images/about-bg.jpg" alt="Our Story" className="rounded-2xl w-full h-80 object-cover" />
-            <div className="absolute -bottom-4 -right-4 luxury-card rounded-xl p-4 text-center w-32">
+            <div className="absolute bottom-3 right-3 sm:-bottom-4 sm:-right-4 luxury-card rounded-xl p-3 sm:p-4 text-center w-32">
               <div className="font-display text-3xl font-bold gold-text">25+</div>
               <div className="text-gray-400 text-xs">Years of Excellence</div>
             </div>
@@ -65,7 +65,7 @@ export default function AboutPage() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">What We Stand For</p>
-            <h2 className="font-display text-4xl font-bold text-white">Our Values</h2>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">Our Values</h2>
             <div className="gold-divider max-w-xs mx-auto mt-4" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -99,13 +99,13 @@ export default function AboutPage() {
         <div className="mb-20">
           <div className="text-center mb-12">
             <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">Behind the Brand</p>
-            <h2 className="font-display text-4xl font-bold text-white">Meet Our Team</h2>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white">Meet Our Team</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { name: 'Mohammed Malik', role: 'Founder & CEO', initial: 'M' },
-              { name: 'Khalid Malik', role: 'Co-Founder & Head of Fragrance', initial: 'K' },
-              { name: 'Sara Malik', role: 'Creative Director', initial: 'S' },
+              { name: 'S.M. Muddassir', role: 'Founder & CEO', initial: 'M' },
+              { name: 'Khabeer', role: 'Co-Founder', initial: 'K' },
+              { name: 'Fatima Ali', role: 'Creative Director', initial: 'S' },
             ].map((member, i) => (
               <div key={i} className="luxury-card rounded-2xl p-6 text-center">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-black font-bold text-2xl font-display mx-auto mb-4">
@@ -120,7 +120,7 @@ export default function AboutPage() {
 
         {/* CTA */}
         <div className="luxury-card rounded-3xl p-10 text-center">
-          <h2 className="font-display text-4xl font-bold text-white mb-3">Experience the Difference</h2>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mb-3">Experience the Difference</h2>
           <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">Explore our curated collection of luxury fragrances and discover your signature scent today.</p>
           <Link to="/shop" className="btn-gold px-10 py-4 rounded-full text-sm font-semibold inline-flex items-center gap-2">
             Shop Our Collection <ArrowRight size={16} />

@@ -45,10 +45,10 @@ export default function Navbar() {
           <div className="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center text-xs text-gray-400">
             <div className="flex items-center gap-4">
               <span>📞 +92 328 2681830</span>
-              <span className="hidden sm:inline">✉️ hafizmuddassir46@gmail.com</span>
+              <span className="hidden lg:inline">✉️ hafizmuddassir46@gmail.com</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1">
+              <span className="hidden md:flex items-center gap-1">
                 <span className="text-gold">✓</span> Free shipping on orders above Rs. 5,000
               </span>
               <span className="hidden sm:flex items-center gap-1">
@@ -104,7 +104,7 @@ export default function Navbar() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 sm:gap-3">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}

@@ -419,6 +419,41 @@ input[type="checkbox"] {
   color: #d7d2c9 !important;
 }
 
+/* Keep controls usable and prevent intrinsic sizing from forcing page overflow. */
+input,
+select,
+textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+@media (max-width: 639px) {
+  input,
+  textarea {
+    font-size: 16px;
+  }
+
+  .luxury-card:hover {
+    transform: none;
+  }
+}
+
+@media (pointer: coarse) {
+  .luxury-card:hover {
+    transform: none;
+  }
+
+  .touch-action-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 .dark-media-section .btn-outline-gold {
   background: rgba(13, 13, 13, 0.18);
   backdrop-filter: blur(8px);

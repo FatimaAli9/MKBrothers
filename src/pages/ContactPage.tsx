@@ -27,8 +27,8 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="py-16 text-center">
         <p className="text-gold text-xs tracking-[0.3em] uppercase mb-3">Get in Touch</p>
-        <h1 className="font-display text-5xl font-bold text-white mb-3">Contact Us</h1>
-        <p className="text-gray-400 text-base max-w-lg mx-auto">
+        <h1 className="font-display text-4xl sm:text-5xl font-bold text-white mb-3">Contact Us</h1>
+        <p className="text-gray-400 text-sm sm:text-base max-w-lg mx-auto px-4">
           Have a question about a fragrance? Need help with your order? Our team is here to assist you.
         </p>
       </section>
@@ -90,7 +90,7 @@ export default function ContactPage() {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-2 luxury-card rounded-2xl p-6">
+          <div className="lg:col-span-2 luxury-card rounded-2xl p-4 sm:p-6">
             <h2 className="font-display text-2xl font-semibold text-white mb-5">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

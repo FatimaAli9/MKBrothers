@@ -46,7 +46,7 @@ export default function OrderConfirmationPage() {
           <div className="absolute inset-0 w-24 h-24 mx-auto rounded-full bg-green-400/10 animate-ping" />
         </div>
 
-        <h1 className="font-display text-4xl font-bold text-white mb-2">Order Confirmed! 🎉</h1>
+        <h1 className="font-display text-3xl sm:text-4xl font-bold text-white mb-2">Order Confirmed! 🎉</h1>
         <p className="text-gray-400 text-base mb-2">
           Thank you, <span className="text-gold font-semibold">{order.userName}</span>!
         </p>
@@ -98,7 +98,7 @@ export default function OrderConfirmationPage() {
                 <div className="w-12 h-12 rounded-lg bg-gray-800 overflow-hidden">
                   <ProductImage src={item.product.image} alt={item.product.name} />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <p className="text-white text-sm font-semibold">{item.product.name}</p>
                   <p className="text-gray-500 text-xs">{item.size} × {item.quantity}</p>
                 </div>

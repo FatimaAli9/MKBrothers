@@ -46,8 +46,8 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
   if (view === 'list') {
     return (
       <Link to={`/product/${product.id}`}>
-        <div className="luxury-card rounded-xl overflow-hidden flex gap-4 p-4 cursor-pointer">
-          <div className="product-image-container w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 bg-gray-900">
+        <div className="luxury-card rounded-xl overflow-hidden flex flex-col sm:flex-row gap-4 p-3 sm:p-4 cursor-pointer">
+          <div className="product-image-container w-full sm:w-32 aspect-[4/3] sm:aspect-square sm:h-32 rounded-lg overflow-hidden flex-shrink-0 bg-gray-900">
             {hasImage ? (
               <img
                 src={product.image}
@@ -59,7 +59,7 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
               <div className="w-full h-full flex items-center justify-center text-gray-600 text-xs">No image</div>
             )}
           </div>
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
               <div>
                 {product.isNew && <span className="badge-gold text-[10px] mr-2">NEW</span>}
@@ -78,7 +78,7 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
               <span className="text-gray-500 text-xs ml-1">({product.reviewCount})</span>
             </div>
             <p className="text-gray-400 text-sm mt-2 line-clamp-2">{product.description}</p>
-            <div className="flex items-center justify-between mt-3">
+            <div className="flex flex-wrap items-center justify-between gap-2 mt-3">
               <div className="flex items-center gap-2">
                 <span className="font-display text-lg font-bold gold-text">{formatPrice(product.price)}</span>
                 {product.originalPrice && (
@@ -120,7 +120,7 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
             )}
           </div>
           {/* Quick actions */}
-          <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
+          <div className="touch-action-visible absolute top-3 right-3 flex flex-col gap-2 opacity-100 translate-x-0 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 sm:translate-x-2 sm:group-hover:translate-x-0">
             <button
               onClick={handleWishlist}
               className="w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-gold/20 transition-colors"
@@ -168,7 +168,7 @@ export default function ProductCard({ product, view = 'grid' }: ProductCardProps
       <div className="px-4 pb-4">
         <button
           onClick={handleAddToCart}
-          className="btn-gold w-full py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-1 group-hover:translate-y-0"
+          className="touch-action-visible btn-gold w-full py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 opacity-100 translate-y-0 sm:opacity-0 sm:group-hover:opacity-100 transition-all duration-300 sm:-translate-y-1 sm:group-hover:translate-y-0"
         >
           <ShoppingBag size={14} /> Add to Cart
         </button>

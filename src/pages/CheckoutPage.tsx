@@ -115,7 +115,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Steps */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
           {[
             { num: 1, label: 'Shipping Details' },
             { num: 2, label: 'Review & Confirm' },
@@ -136,7 +136,7 @@ export default function CheckoutPage() {
           {/* Form */}
           <div className="lg:col-span-2">
             {step === 1 ? (
-              <form onSubmit={handleStep1} className="luxury-card rounded-2xl p-6 space-y-5">
+              <form onSubmit={handleStep1} className="luxury-card rounded-2xl p-4 sm:p-6 space-y-5">
                 <h2 className="font-display text-xl font-semibold text-white flex items-center gap-2">
                   <MapPin size={18} className="text-gold" /> Shipping Details
                 </h2>

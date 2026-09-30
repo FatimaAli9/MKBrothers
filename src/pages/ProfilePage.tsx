@@ -57,14 +57,14 @@ export default function ProfilePage() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="luxury-card rounded-2xl p-6 sticky top-28">
+            <div className="luxury-card rounded-2xl p-6 lg:sticky lg:top-28">
               {/* Avatar */}
               <div className="text-center mb-6">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-black font-bold text-2xl font-display mx-auto mb-3">
                   {user.name.charAt(0).toUpperCase()}
                 </div>
                 <h2 className="font-display text-base font-semibold text-white">{user.name}</h2>
-                <p className="text-gray-500 text-xs">{user.email}</p>
+                <p className="text-gray-500 text-xs break-all">{user.email}</p>
                 {user.isAdmin && <span className="badge-gold mt-1 inline-block">Admin</span>}
               </div>
 
@@ -150,14 +150,14 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-gold/15">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-gold/15">
                   {[
                     { label: 'Total Orders', value: userOrders.length },
                     { label: 'Wishlist Items', value: user.wishlist.length },
                     { label: 'Total Spent', value: `Rs. ${userOrders.reduce((s, o) => s + o.total, 0).toLocaleString()}` },
                   ].map(stat => (
                     <div key={stat.label} className="text-center">
-                      <p className="font-display text-xl font-bold gold-text">{stat.value}</p>
+                      <p className="font-display text-lg sm:text-xl font-bold gold-text break-words">{stat.value}</p>
                       <p className="text-gray-500 text-xs">{stat.label}</p>
                     </div>
                   ))}

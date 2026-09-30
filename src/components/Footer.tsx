@@ -20,11 +20,11 @@ export default function Footer() {
       <div className="border-b border-gold/10 py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <p className="text-gold text-xs tracking-[0.3em] uppercase mb-2">Exclusive Offers</p>
-          <h3 className="font-display text-3xl font-bold text-white mb-3">Join Our Fragrance Circle</h3>
+          <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-3">Join Our Fragrance Circle</h3>
           <p className="text-gray-400 text-sm mb-6 max-w-md mx-auto">
             Subscribe to receive exclusive offers, new arrivals, and fragrance stories delivered to your inbox.
           </p>
-          <form onSubmit={handleNewsletter} className="flex max-w-md mx-auto gap-3">
+          <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
             <input
               type="email"
               value={email}
@@ -33,7 +33,7 @@ export default function Footer() {
               className="luxury-input flex-1 px-4 py-3 rounded-lg text-sm"
               required
             />
-            <button type="submit" className="btn-gold px-6 py-3 rounded-lg text-sm flex items-center gap-2">
+            <button type="submit" className="btn-gold px-6 py-3 rounded-lg text-sm flex items-center justify-center gap-2">
               <Send size={15} /> Subscribe
             </button>
           </form>
@@ -125,7 +125,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-3">
               <Mail size={16} className="text-gold flex-shrink-0" />
-              <a href="mailto:hafizmuddassir46@gmail.com" className="text-gray-400 hover:text-gold text-sm transition-colors">hafizmuddassir46@gmail.com</a>
+              <a href="mailto:hafizmuddassir46@gmail.com" className="text-gray-400 hover:text-gold text-sm transition-colors break-all">hafizmuddassir46@gmail.com</a>
             </li>
           </ul>
 
