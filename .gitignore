@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Production build
+/dist/
+/.vite/
+/.cache/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+server.out.log
+server.err.log
+npm-debug.log*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.pem
+*.key
