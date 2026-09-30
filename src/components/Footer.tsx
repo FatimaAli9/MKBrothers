@@ -45,7 +45,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-black font-bold text-sm font-display">MK</div>
+            <img src="/images/logo.png" alt="MK Brothers logo" className="w-10 h-10 object-contain" />
             <div>
               <div className="font-display text-xl font-bold gold-text">MK Brothers</div>
               <div className="text-[10px] tracking-[0.2em] text-gray-500 uppercase">Perfume</div>

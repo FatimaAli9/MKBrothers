@@ -61,7 +61,7 @@ export default function SignupPage() {
     <div className="pt-[104px] min-h-screen flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-black font-bold text-xl font-display mx-auto mb-4">MK</div>
+          <img src="/images/logo.png" alt="MK Brothers logo" className="w-16 h-16 object-contain mx-auto mb-4" />
           <h1 className="font-display text-3xl font-bold text-white">Create Account</h1>
           <p className="text-gray-400 text-sm mt-1">Join the MK Brothers community</p>
         </div>
