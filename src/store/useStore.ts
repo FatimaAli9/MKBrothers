@@ -416,7 +416,10 @@ export const useStore = create<StoreState>()(
         }
 
         const user = userFromSupabase(data.user);
-        const isAdminAccount = Boolean(data.user.user_metadata?.role === 'admin' || data.user.email?.toLowerCase() === adminUsername?.toLowerCase());
+        const isAdminAccount = Boolean(
+          data.user.app_metadata?.role === 'admin' ||
+          data.user.email?.toLowerCase() === adminUsername?.toLowerCase()
+        );
         if (!isAdminAccount) {
           await supabase.auth.signOut();
           return { success: false, message: 'This account is not authorized for admin access.' };
