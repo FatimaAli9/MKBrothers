@@ -63,7 +63,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2 flex-shrink-0">
-              <img src="/images/logo.png" alt="MK Brothers logo" className="w-15 h-15 object-contain" />
+              <img src="/images/logo.png" alt="MK Brothers logo" className="w-12 h-12 object-contain" />
               <div className="hidden sm:block">
                 <div className="font-display text-xl font-bold gold-text leading-tight">MK Brothers</div>
                 <div className="text-[10px] tracking-[0.2em] text-gray-400 uppercase">Perfume</div>
