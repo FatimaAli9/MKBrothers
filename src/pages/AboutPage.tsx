@@ -109,7 +109,7 @@ export default function AboutPage() {
             {[
               { name: 'S.M. Muddassir', role: 'Founder & CEO', initial: 'M' },
               { name: 'Khabeer', role: 'Co-Founder', initial: 'K' },
-              { name: 'Fatima Ali', role: 'Creative Director', initial: 'S' },
+              { name: 'Fatima Ali', role: 'Creative Director', initial: 'F' },
             ].map((member, i) => (
               <div key={i} className="luxury-card rounded-2xl p-6 text-center">
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-black font-bold text-2xl font-display mx-auto mb-4">
